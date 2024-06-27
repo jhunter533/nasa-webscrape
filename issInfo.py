@@ -30,25 +30,27 @@ if __name__=="__main__":
     response=urllib.request.urlopen(url)
     data=response.read()
     #data=downloadDate(timestamp)
-    print(data)
+    #print(data)
     tle_lines=data.decode('utf-8').splitlines()
-    print(tle_lines[0],tle_lines[1],tle_lines[2])
+    #print(tle_lines[0],tle_lines[1],tle_lines[2])
     ts=load.timescale()
     data2=EarthSatellite(tle_lines[1],tle_lines[2],tle_lines[0],ts)
-    print(data2)
+    #print(data2)
     t=ts.now()
     geocentric=data2.at(t)
     subpoint=geocentric.subpoint()
     lat=subpoint.latitude.degrees
     long=subpoint.longitude.degrees
     altitude=subpoint.elevation.km 
-    print(lat)
-    print(long)
-    print(altitude)
-    lat1=35.07821247945041
-    long1= -106.65145440859672
-    lat2=35.078774406429616
-    long2=-106.65009184645479
-    bearing=get_bearing(lat1,long1,lat2,long2)
-    print(bearing)
+    #print(lat)
+    #print(long)
+    #print(altitude)
+    lat2=lat
+    long2=long
+    print(f"{lat2} {long2}")
+    #ser=serial.Serial('/dev/ttyACM0',9600)
+    #ser.write(str(lat2).encode())
+    #ser.close()
+    #bearing=get_bearing(lat1,long1,lat2,long2)
+    #print(bearing)
 
